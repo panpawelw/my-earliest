@@ -31,7 +31,7 @@ public class Main1 {
 				for(Element elem : links) {
 					String rawText = elem.text();                      //format text to leave only words
 					String justWords = rawText.replaceAll("[^A-Za-zżźćńółęąśŻŹĆĄŚĘŁÓŃ\\s]","");
-					String toLowerCase = justWords.toLowerCase();
+					String toLowerCase = justWords.toLowerCase();		//to lower case
 					firstStep.add(toLowerCase);
 				}
 			} catch (IOException e) {
@@ -50,8 +50,8 @@ public class Main1 {
 		try {
 			byte[] temp = Files.readAllBytes(firstFile);
 			String removeEol = new String(temp);
-			String eol = System.getProperty("line.separator");
-			String eolRemoved = removeEol.replaceAll(eol, " ");
+			String eol = System.getProperty("line.separator");			//remove line separators and
+			String eolRemoved = removeEol.replaceAll(eol, " ");			//replace multiple whitespaces with single spaces
 			secondStep = eolRemoved.replaceAll("\\s+", " ");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -59,13 +59,13 @@ public class Main1 {
 		String[] words = secondStep.split(" ");                         //split string into separate words
 		Map<String, Integer> frequency = new HashMap<String, Integer>(); //create HashMap of word frequency
 		for(String wordIt : words) {
-			if(wordIt.length()>3) {
+			if(wordIt.length()>3) {										//remove words shorter than 3 letters
 				Integer count = frequency.get(wordIt);
 				if(count==null) count=0;
 				frequency.put(wordIt, count+1);
 			}
 		}
-		String mostFrequentTen ="";                                      //get 10 most frequent words from HashMap
+		String mostFrequentTen ="";                                      //extract 10 most frequent words from HashMap
 		for(int i=0;i<10;i++ ) {
 			Entry<String,Integer> maxEntry = null;
 			for(Entry<String,Integer> entry : frequency.entrySet()) {
@@ -76,7 +76,7 @@ public class Main1 {
 			mostFrequentTen = mostFrequentTen + " " + maxEntry;
 			frequency.remove(maxEntry.getKey());
 		}
-		Path secondFile = Paths.get("./most_popular_words.txt");       //save to second file
+		Path secondFile = Paths.get("./most_popular_words.txt");       //save to the second file
 		try {
 			Files.write(secondFile, mostFrequentTen.getBytes(), StandardOpenOption.CREATE);
 		} catch (IOException e) {
