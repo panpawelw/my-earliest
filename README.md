@@ -8,7 +8,7 @@ Some simple games and programs:
 
 - Guessing numbers #2 - this program will guess a number chosen by you in 10 steps or less.
 
-- Dice - dice throwing simulator.
+- Dice - dice throwing simulator. Enter
 
 - Most popular words - scan chosen websites using jsoup, save a list of all words in headlines to a file,
                        make a list of 10 most frequent words and save them to another file.
