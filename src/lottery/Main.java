@@ -1,10 +1,10 @@
-package lotto;
+package lottery;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Scanner;
 
-public class Main1 {
+public class Main {
 
 	private static Scanner scan;
 
@@ -38,7 +38,7 @@ public class Main1 {
 			}
 		}
 		System.out.println("Number of hits: " + numberOfHits);		// display the number of correct hits
-
+		scan.close();												// close the scanner before terminating
 	}
 
 	public static int[] getNumbers(int min, int max) {				// this method gets 6 integers from console input
