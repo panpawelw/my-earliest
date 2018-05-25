@@ -1,17 +1,17 @@
-package guess_numbers2;
+package guessing_numbers2;
 
 import java.util.Scanner;
 
-public class Main1 {
+public class Main {
 	
 	public static void main(String[] args) {
 		
-		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(System.in);
 		String answer = "";																								// set minimum and maximum for guesses
 		int min = 0;
 		int max = 1000;
 		System.out.println("Think of a number between 0 and 1000 and I'll guess it in no more than 10 attempts.");
+		System.out.println(" Please answer using 'too much', 'too little' and 'correct' phrases.");
 		for(int i=1;i<11;i++) {																							// guess up to 10 times adjusting minimum and maximum
 			int guess = ((max-min)/2)+min;
 			while(!answer.equals("correct")&&!answer.equals("too much")&&!answer.equals("too little")) {
@@ -20,7 +20,8 @@ public class Main1 {
 				switch (answer) {																						// recognize answers
 				case "correct":
 					System.out.println("I won!");
-					System.exit(0);
+					scan.close();																						// close the scanner
+					System.exit(0);																						// and terminate early
 					break;
 				case "too much":
 					max = guess;
@@ -32,5 +33,7 @@ public class Main1 {
 			}
 			answer="";																									// wipe out the old answer
 		}
+		System.out.println("Looks like I lost :( ... Just kidding, you are a liar!!!");
+		scan.close();
 	}
 }

@@ -42,7 +42,7 @@ public class Main {
 	}
 
 	public static int[] getNumbers(int min, int max) {				// this method gets 6 integers from console input
-																	// checking for mistakes, numbers outside the range 
+																	// checking for errors, numbers outside the range 
 		String temp = "";											// and duplicates
 		Integer num = 0;
 		int[] numbers = new int[6];
