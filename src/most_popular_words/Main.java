@@ -16,14 +16,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Main {
-
 	public static void main(String[] args) {
-
 		String[] webList = { "http://www.onet.pl", "span.title", // list of portals and search criteria
 				"https://www.wp.pl", "a[title]", "http://www.interia.pl", "a[title]" };
 		ArrayList<String> firstStep = new ArrayList<>();
 		for (int i = 0; i < webList.length; i = i + 2) { // scan each portal for titles
 			Connection connect = Jsoup.connect(webList[i]);
+			System.out.println("Connecting to: " + webList[i] + "...");
 			try {
 				Document document = connect.get();
 				Elements links = document.select(webList[i + 1]);
@@ -37,14 +36,13 @@ public class Main {
 				e.printStackTrace();
 			}
 		}
-
+		System.out.println("Saving all popular words to popular_words.txt...");
 		Path firstFile = Paths.get("./popular_words.txt"); // save content to a file
 		try {
 			Files.write(firstFile, firstStep);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 		String secondStep = ""; // read first file to a string
 		try {
 			byte[] temp = Files.readAllBytes(firstFile);
@@ -76,6 +74,7 @@ public class Main {
 			mostFrequentTen = mostFrequentTen + " " + maxEntry;
 			frequency.remove(maxEntry.getKey());
 		}
+		System.out.println("Saving 10 most popular words to most_popular_words.txt...");
 		Path secondFile = Paths.get("./most_popular_words.txt"); // save to the second file
 		try {
 			Files.write(secondFile, mostFrequentTen.getBytes(), StandardOpenOption.CREATE);
