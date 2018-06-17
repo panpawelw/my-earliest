@@ -11,7 +11,7 @@ public class Main {
 		while (true) {
 			try {
 				System.out.println(
-						"Enter dice throw parameters using XdY+Z format. X = number of dice (>=1, optional), Y = number of faces, Z = modifier (+/-, optional).");
+						"Enter dice roll parameters using XdY+Z format. X = number of dice (>=1, optional), Y = number of faces, Z = modifier (+/-, optional).");
 				System.out.println(
 						"Valid dice types are d3, d4, d6, d8, d10, d12, d20, d100. Enter quit command to exit program.");
 				input = scan.nextLine();
@@ -63,7 +63,7 @@ public class Main {
 					throw new IllegalArgumentException();
 				} // PARSING FINISHED
 
-				Random rand = new Random(); // dice throw and result output
+				Random rand = new Random(); // dice roll and result output
 				long finalResult = 0;
 				for (int l = 1; l < multiplier; l++) {
 					int result = rand.nextInt(faces) + 1;
