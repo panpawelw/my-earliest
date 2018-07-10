@@ -1,4 +1,4 @@
-My first attempts at Java programming. Demonstrates grasp of basic general programming and Java concepts, like variables, arrays, collections, loops, control flow statements, classes, methods, console input and output and file operations. 
+My first attempts at Java programming. Demonstrates grasp of basic general programming and Java concepts like variables, arrays, collections, loops, control flow statements, classes, methods, console input and output and file operations. 
 
 Some simple games and programs:
 
